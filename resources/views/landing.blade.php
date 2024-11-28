@@ -68,6 +68,14 @@
             font-weight: bold;
             margin-bottom: 1rem;
         }
+        #content {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
 
     /* Estilos del chatbot */
     .chatbot-section {
@@ -203,6 +211,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#" onclick="showDetails('servicios')">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="showDetails('productos')">Productos</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" onclick="showDetails('mission')">Misión</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" onclick="showDetails('vision')">Visión</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" onclick="showDetails('history')">Historia</a></li>
@@ -247,6 +257,13 @@
             </div>
         </section>
 
+        <section id="detail" class="text-center">
+            <div id="details-content">
+                <h3 class="">Informe de presentacion</h3>
+                <!-- Video -->
+                <iframe width="80%" height="450" src="https://www.youtube.com/embed/6zr-UmON5yY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
         <!-- Contactos -->
         <section id="contact" class="mt-5">
             <h2 class="text-center">Contáctanos</h2>
@@ -292,8 +309,10 @@
     <script>
         // Contenido de las secciones
         const content = {
+            servicios: "<h3 class ='section-title'>Nuestro Servicio</h3><p> En DigitalForge, ofrecemos una amplia gama de servicios en el ámbito del desarrollo de software, diseñados para satisfacer las necesidades específicas de cada cliente. Nuestro enfoque incluye el desarrollo de aplicaciones personalizadas, diseño y desarrollo de sitios web, integración de sistemas, mantenimiento de software, y consultoría tecnológica. Nos especializamos en soluciones innovadoras utilizando tecnologías modernas para optimizar procesos empresariales, mejorar la experiencia del usuario y garantizar la calidad en cada etapa del proyecto. Además, trabajamos de la mano con nuestros clientes, asegurándonos de que las soluciones entregadas cumplan con sus objetivos estratégicos y aporten un valor significativo a su negocio.</p>",
+            productos: "<h3 class ='section-title'>Nuestro Productos</h3><p> En DigitalForge, desarrollamos productos innovadores que transforman negocios y optimizan procesos. Ofrecemos software empresarial personalizado, aplicaciones móviles nativas y multiplataforma, sistemas de gestión empresarial (ERP), plataformas de comercio electrónico, herramientas de análisis de datos y soluciones de inteligencia artificial. Además, contamos con productos listos para su implementación, como sistemas de facturación electrónica, plataformas CRM, y aplicaciones para la gestión de inventarios. Cada producto está diseñado para ser escalable, intuitivo y adaptable a las necesidades de diferentes industrias, asegurando que nuestros clientes cuenten con herramientas tecnológicas de alto impacto y calidad.</p>",
             mission: "<h3 class='section-title'>Nuestra Misión</h3><p> Nuestra misión como empresa y equipo es la de facilitar la vida de las personas mediante el uso de la tecnología, desarrollando soluciones innovadoras enfocadas a la calidad y personalización del resultado, que proporcionen una grata experiencia de usuario, y que aporten valor y tengan un impacto positivo en el día a día de nuestra sociedad.</p>",
-            vision: "<h3 class='section-title'>Nuestra visión de aquello en lo que nos queremos convertir se resume en: Llegar a ser un referente como empresa de desarrollo, en los productos y servicios ofrecidos. Diseñar y desarrollar servicios y soluciones software diferenciales, que aporten un gran valor. Ser una empresa atractiva, como proveedor tecnológico y también como lugar de trabajo</p>",
+            vision: "<h3 class='section-title'>Nuestra visión</h3><p> Es de aquello en lo que nos queremos convertir se resume en: Llegar a ser un referente como empresa de desarrollo, en los productos y servicios ofrecidos. Diseñar y desarrollar servicios y soluciones software diferenciales, que aporten un gran valor. Ser una empresa atractiva, como proveedor tecnológico y también como lugar de trabajo</p>",
             history: "<h3 class='section-title'>Historia</h3><p> DigitalForge, es una empresa dedicada al desarrollo de software con base en Santa Cruz de la Sierra, inicia sus actividades de forma comercial el 2 de octubre de 2013, pasando por una reestructuración estratégica el 30 de noviembre de 2015, dando una mejor estructura a la firma tanto en la administración como en la parte comercial, para poder dar un mejor servicio y satisfacer al cliente con un producto de calidad.</p>",
             privacy: "<h3 class='section-title'>Política de Privacidad</h3><p>Nos comprometemos a proteger la información de nuestros clientes.</p>"
         };
@@ -360,8 +379,9 @@
             return "Dime que informacion deseas saber de Digital Forge?"
         }else if(message.includes("gracias")){
             return "De nada, puedes volver a preguntar si deseas saber mas sobre Digital Forge"
-        }
-        {
+        }else if(message.includes("servicios")){
+            return "En DigitalForge, ofrecemos una amplia gama de servicios en el ámbito del desarrollo de software, diseñados para satisfacer las necesidades específicas de cada cliente. Nuestro enfoque incluye el desarrollo de aplicaciones personalizadas, diseño y desarrollo de sitios web, integración de sistemas, mantenimiento de software, y consultoría tecnológica. Nos especializamos en soluciones innovadoras utilizando tecnologías modernas para optimizar procesos empresariales, mejorar la experiencia del usuario y garantizar la calidad en cada etapa del proyecto. Además, trabajamos de la mano con nuestros clientes, asegurándonos de que las soluciones entregadas cumplan con sus objetivos estratégicos y aporten un valor significativo a su negocio."
+        }else{
             return "Lo siento, no entendí tu pregunta. ¿Podrías reformularla?";
         }
     }
